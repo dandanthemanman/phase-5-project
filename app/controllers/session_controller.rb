@@ -1,0 +1,23 @@
+class SessionController < ApplicationController
+    skip_before_action :authorize, only: [:create]
+    
+    # login --> used in loginform
+    def create
+        # find the user in the db via username
+        user = User.find_by(username: params[:username])
+        # check password
+        if user&.authenticate(params[:password])
+            # return user data
+            session[:user_id] = user.id
+            render json: user, status: :created
+        else
+            render json: { login: "invalid username or password"}, status: 401
+        end
+    end
+
+    # logout --> used in logout button for navbar
+    def destroy
+        session.delete :user_id
+        head :no_content
+    end
+end
