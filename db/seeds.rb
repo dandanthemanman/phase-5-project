@@ -1,38 +1,45 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-require 'faker'
-require 'betterlorem'
-
+require 'faker';
 
 puts "starting seeding..."
 
 User.destroy_all
-User_tutor.destroy_all
+UserTutor.destroy_all
 Tutor.destroy_all
 Review.destroy_all
+
+# only need seed data for tutors and reviews
 
 
 20.times do 
 Tutor.create(
-    name: Faker::Name.name
-    description: BetterLorem.p(1, true, true),
-    hourly_rate: rand(15 ..75)
+    name: Faker::Name.name,
+    description: Faker::Lorem.paragraph(sentence_count: 4),
+    hourly_rate: rand(15 ..75),
+
  )
 end
 
-500.times do
+User.create(
+    username: "dan",
+    password_digest: "dan"
+)
+
+50.times do
     Review.create(
-        review_body: 
-        rating: 
+        review_body: Faker::Lorem.paragraph(sentence_count: 3),
+        rating: rand(1..5),
+        # tutor_id
+        tutor_id: Tutor.ids.sample,
+        # user_id
+        user_id: 1
     )
 end
 
+5.times do 
+    UserTutor.create(
+        user_id: User.first.id,
+        tutor_id: Tutor.ids.sample
+    )
+end
 
-
-puts "done seeding!"
+puts "seeding complete √"
