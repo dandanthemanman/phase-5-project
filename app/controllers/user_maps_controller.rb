@@ -1,2 +1,0 @@
-class UserMapsController < ApplicationController
-end

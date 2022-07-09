@@ -10,22 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_04_144531) do
+ActiveRecord::Schema.define(version: 2022_07_08_200014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "maps", force: :cascade do |t|
-    t.float "starting_point"
-    t.float "ending_point"
-    t.float "data"
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "tutor_id"
+    t.string "review_body"
+    t.float "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "user_maps", force: :cascade do |t|
+  create_table "tutors", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "hourly_rate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_tutors", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "map_id"
+    t.integer "tutor_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
