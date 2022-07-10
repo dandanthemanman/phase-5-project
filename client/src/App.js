@@ -27,7 +27,7 @@ function App() {
   useEffect(auth, []);
 
   // VV this messes with the routing
-  // if (!user) return <LoginForm />;
+  if (!user) return <LoginForm />;
 
   return (
     <Switch>
