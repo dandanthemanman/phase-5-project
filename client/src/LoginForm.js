@@ -13,9 +13,9 @@ function LoginForm() {
 
   let history = useHistory();
 
-  // connects to login in backend
   function handleLogin(e) {
     e.preventDefault();
+    // connects to login in backend
     fetch("/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

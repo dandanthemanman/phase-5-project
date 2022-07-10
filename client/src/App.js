@@ -1,5 +1,5 @@
-// import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { Route, Switch } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import Map from "./Map";
@@ -9,17 +9,25 @@ import { useEffect, useState } from "react";
 function App() {
   const [user, setUser] = useState(null);
 
+  let history = useHistory();
+
+  // auto log in
   function auth() {
     fetch("/me").then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
+        r.json()
+          .then((user) => setUser(user))
+          .then(() => {
+            history.push("/home");
+          });
       }
     });
   }
 
   useEffect(auth, []);
 
-  if (!user) return <LoginForm />;
+  // VV this messes with the routing
+  // if (!user) return <LoginForm />;
 
   return (
     <Switch>
