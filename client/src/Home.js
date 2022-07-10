@@ -3,7 +3,7 @@ import Navigation from "./Navigation";
 function Home({ user, setUser }) {
   return (
     <>
-      <h1>Welcome {user.username}</h1>
+      <h1>Home</h1>
       <Navigation user={user} setUser={setUser} />
     </>
   );

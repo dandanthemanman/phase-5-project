@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
@@ -53,6 +53,7 @@ function LoginForm() {
       if (r.ok) {
         r.json()
           .then((userData) => setUser(userData))
+          // TODO: VV not routing to "/home"
           .then(() => {
             history.push("/home");
           });
