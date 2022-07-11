@@ -1,22 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { Card, Button } from "react-bootstrap";
-import { BsEmojiSmile } from "react-icons/bs";
 
-function TutorCard({ tutor, user }) {
+function SavedTutorCard({ tutor }) {
+  function handleEliminate() {}
   const [modalToggle, setModalToggle] = useState(false);
-
-  function handleSave() {
-    // TODO: post statement to make new usertutor
-    fetch("/user_tutors", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        user_id: user.id,
-        tutor_id: tutor.id,
-      }),
-    });
-  }
 
   return (
     <Card style={{ width: "18rem" }}>
@@ -25,8 +13,8 @@ function TutorCard({ tutor, user }) {
         <Card.Title>${tutor.hourly_rate}/hour</Card.Title>
         <Card.Subtitle></Card.Subtitle>
         <Card.Text>Description: {tutor.description}</Card.Text>
-        <Button variant="primary" onClick={handleSave}>
-          Save
+        <Button variant="danger" onClick={handleEliminate}>
+          Eliminate
         </Button>
         <Button
           variant="primary"
@@ -41,4 +29,4 @@ function TutorCard({ tutor, user }) {
   );
 }
 
-export default TutorCard;
+export default SavedTutorCard;

@@ -9,7 +9,7 @@ function Home({ user, setUser }) {
       <h1>Home</h1>
       <Navigation user={user} setUser={setUser} />
       <SavedTutors user={user} />
-      <TutorList />
+      <TutorList user={user} />
     </>
   );
 }
