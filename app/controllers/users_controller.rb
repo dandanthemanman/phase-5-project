@@ -8,14 +8,12 @@ class UsersController < ApplicationController
     def create 
         user = User.create!(user_params)
         session[:user_id] = user.id
-        byebug
         render json: user, status: :created 
     end
 
     # auto login --> used in useeffect in app.js
     def show
         user = User.find_by(id: session[:user_id])
-        # TODO: maybe include if/else here to give r.ok/r.not_ok back to the auth fn in React
         render json: user, status: :created
     end
 

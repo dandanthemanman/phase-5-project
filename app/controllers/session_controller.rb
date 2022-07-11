@@ -8,9 +8,7 @@ class SessionController < ApplicationController
         # check password
         if user&.authenticate(params[:password])
             # return user data
-            byebug
             session[:user_id] = user.id
-            byebug
             render json: user, status: :created
         else
             render json: { errors: "invalid username or password"}, status: 401
@@ -21,6 +19,5 @@ class SessionController < ApplicationController
     def destroy 
         session.delete(:user_id)
         head :no_content
-        byebug
     end
 end

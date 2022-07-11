@@ -20,7 +20,7 @@ end
 
 User.create(
     username: "dan",
-    password_digest: "dan"
+    password: "dan"
 )
 
 50.times do
