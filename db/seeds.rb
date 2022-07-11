@@ -30,7 +30,7 @@ User.create(
         # tutor_id
         tutor_id: Tutor.ids.sample,
         # user_id
-        user_id: 1
+        user_id: User.first.id
     )
 end
 

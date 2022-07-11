@@ -43,7 +43,12 @@ function TutorCard({ tutor, user }) {
         </Modal.Header>
         <Modal.Body>
           {tutor.description}
-          <ul>{console.log(tutor.reviews)}</ul>
+          <ul>
+            Reviews:
+            {tutor.reviews.map((review) => (
+              <li key={review.id}>"{review.review_body}"</li>
+            ))}
+          </ul>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
