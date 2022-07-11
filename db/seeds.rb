@@ -14,8 +14,7 @@ Review.destroy_all
 Tutor.create(
     name: Faker::Name.name,
     description: Faker::Lorem.paragraph(sentence_count: 4),
-    hourly_rate: rand(15 ..75),
-
+    hourly_rate: rand(15 ..75)
  )
 end
 
