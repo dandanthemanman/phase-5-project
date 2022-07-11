@@ -3,7 +3,11 @@ import { useState } from "react";
 import { Card, Button } from "react-bootstrap";
 
 function SavedTutorCard({ tutor }) {
-  function handleEliminate() {}
+  function handleEliminate() {
+    // fetch(`/user_tutors/`, {
+    //   method: "DELETE",
+    // });
+  }
   const [modalToggle, setModalToggle] = useState(false);
 
   return (

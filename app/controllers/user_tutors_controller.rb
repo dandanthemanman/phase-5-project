@@ -5,6 +5,12 @@ class UserTutorsController < ApplicationController
         render json: user_tutor, status: :created
     end
 
+    def destroy 
+        byebug
+        # user_tutor= UserTutor.find_by(id: params[id])
+        # user_tutor.destroy
+    end
+
     private
 
     def userTutorParams
