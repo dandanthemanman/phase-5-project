@@ -26,7 +26,7 @@ function App() {
 
   useEffect(auth, []);
 
-  if (!user) return <LoginForm />;
+  if (!user) return <LoginForm user={user} setUser={setUser} />;
 
   return (
     <Switch>

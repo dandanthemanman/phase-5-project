@@ -24,9 +24,8 @@ function Navigation({ user, setUser }) {
     }).then((r) => {
       // resets the user state
       if (r.ok) {
-        setUser(null).then(() => {
-          history.push("/home");
-        });
+        setUser(null);
+        history.push("/home");
       }
     });
   }

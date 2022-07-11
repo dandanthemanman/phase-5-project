@@ -4,16 +4,15 @@ import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-function LoginForm() {
+function LoginForm({ setUser, user }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [user, setUser] = useState(null);
   const [revealSignup, setRevealSignup] = useState(false);
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
 
-  console.log(revealSignup);
+  // console.log(revealSignup);
 
   let history = useHistory();
 
@@ -51,12 +50,11 @@ function LoginForm() {
       setIsLoading(false);
       // if userdata is good, set user state
       if (r.ok) {
-        r.json()
-          .then((userData) => setUser(userData))
-          // TODO: VV not routing to "/home"
-          .then(() => {
-            history.push("/home");
-          });
+        r.json().then((userData) => {
+          setUser(userData);
+          history.push("/home");
+        });
+        // TODO: VV not routing to "/home"
       } else {
         // if userdata is bad, set error state
         r.json().then((err) => setErrors(err.errors));

@@ -17,7 +17,6 @@ function TutorList() {
 
   return (
     <div>
-      {console.log(`The return is happening. Tutor data is: ${tutorData}`)}
       {tutorData?.map((tutor) => (
         <>
           <TutorCard key={tutor.id} tutor={tutor} />
