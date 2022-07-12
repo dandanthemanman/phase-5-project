@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import TutorCard from "./TutorCard";
 
-function TutorList({ user }) {
+function TutorList({ user, setUser }) {
   const [tutorData, setTutorData] = useState([]);
 
   // fetch tutors fn
@@ -20,7 +20,12 @@ function TutorList({ user }) {
       <h2>Explore Tutors</h2>
       {tutorData?.map((tutor) => (
         <>
-          <TutorCard key={tutor.id} tutor={tutor} user={user} />
+          <TutorCard
+            key={tutor.id}
+            tutor={tutor}
+            user={user}
+            setUser={setUser}
+          />
         </>
       ))}
     </div>

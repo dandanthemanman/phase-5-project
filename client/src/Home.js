@@ -8,8 +8,8 @@ function Home({ user, setUser }) {
     <>
       <h1>Home</h1>
       <Navigation user={user} setUser={setUser} />
-      <SavedTutors user={user} />
-      <TutorList user={user} />
+      <SavedTutors user={user} setUser={setUser} />
+      <TutorList user={user} setUser={setUser} />
     </>
   );
 }

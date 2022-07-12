@@ -33,16 +33,9 @@ function App() {
       <Route exact path="/">
         <LoginForm user={user} setUser={setUser} />
       </Route>
-      <Route path="/signup">
-        <SignupForm user={user} setUser={setUser} />
-      </Route>
-      <Route path="/map">
-        <Map />
-      </Route>
       <Route path="/home">
         <Home user={user} setUser={setUser} />
       </Route>
-      <Route path="/goodbye">goodbye</Route>
     </Switch>
   );
 }

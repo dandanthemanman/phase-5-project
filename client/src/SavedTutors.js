@@ -5,15 +5,14 @@ import "slick-carousel/slick/slick-theme.css";
 // import TutorCard from "./TutorCard";
 import SavedTutorCard from "./SavedTutorCard";
 
-function SavedTutors({ user }) {
-  console.log(user);
+function SavedTutors({ user, setUser }) {
   return (
     <>
       <h2>My Tutors</h2>
       <Slider>
         {user.tutors?.map((tutor) => (
           <div>
-            <SavedTutorCard key={tutor.id} tutor={tutor} />
+            <SavedTutorCard key={tutor.id} tutor={tutor} user={user} />
           </div>
         ))}
       </Slider>

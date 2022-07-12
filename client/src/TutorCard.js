@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Card, Button, Modal } from "react-bootstrap";
 
-function TutorCard({ tutor, user }) {
+function TutorCard({ tutor, user, setUser }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -17,7 +17,18 @@ function TutorCard({ tutor, user }) {
         user_id: user.id,
         tutor_id: tutor.id,
       }),
+    }).then(() => {
+      fetch("/me")
+        .then((r) => r.json())
+        .then((user) => setUser(user));
     });
+  }
+
+  // TODO: write handleReview fn
+  function handleReview() {
+    // fetch("/reviews", {
+    //   method: "POST",
+    // });
   }
 
   return (
@@ -55,7 +66,10 @@ function TutorCard({ tutor, user }) {
             Close
           </Button>
           <Button variant="primary" onClick={handleClose}>
-            Save Changes
+            Enroll
+          </Button>
+          <Button variant="success" onClick={handleReview}>
+            Leave a Review
           </Button>
         </Modal.Footer>
       </Modal>
