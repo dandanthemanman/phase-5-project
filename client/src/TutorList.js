@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import TutorCard from "./TutorCard";
 
-function TutorList({ user, setUser }) {
+function TutorList({ user, setUser, listOfSavedTutors, setListOfSavedTutors }) {
   const [tutorData, setTutorData] = useState([]);
 
   // fetch tutors fn
@@ -25,6 +25,8 @@ function TutorList({ user, setUser }) {
             tutor={tutor}
             user={user}
             setUser={setUser}
+            listOfSavedTutors={listOfSavedTutors}
+            setListOfSavedTutors={setListOfSavedTutors}
           />
         </>
       ))}

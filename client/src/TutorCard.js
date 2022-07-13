@@ -3,7 +3,13 @@ import { useState } from "react";
 import { Card, Button, Modal, Container } from "react-bootstrap";
 import "./styles.css";
 
-function TutorCard({ tutor, user, setUser }) {
+function TutorCard({
+  tutor,
+  user,
+  setUser,
+  listOfSavedTutors,
+  setListOfSavedTutors,
+}) {
   // states
   const [show, setShow] = useState(false);
   const [revealCreateReview, setRevealCreateReview] = useState(false);
@@ -24,9 +30,7 @@ function TutorCard({ tutor, user, setUser }) {
         tutor_id: tutor.id,
       }),
     }).then(() => {
-      fetch("/me")
-        .then((r) => r.json())
-        .then((user) => setUser(user));
+      setListOfSavedTutors([...listOfSavedTutors, tutor]);
     });
   }
 

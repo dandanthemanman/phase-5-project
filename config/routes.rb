@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   post "/login", to: "session#create"
   # logout
   delete "/logout", to: "session#destroy"
+  # custom route to destroy user_tutor using tutor.id params
   delete '/removeusertutor/:id', to: "user_tutor#destroy"
 end

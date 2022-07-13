@@ -2,16 +2,23 @@ import React from "react";
 import { useState } from "react";
 import { Card, Button, Modal } from "react-bootstrap";
 
-function SavedTutorCard({ tutor, user }) {
+function SavedTutorCard({
+  tutor,
+  user,
+  listOfSavedTutors,
+  setListOfSavedTutors,
+}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // eliminate user_tutor fn
   function handleEliminate(id) {
-    console.log(id);
     fetch(`/user_tutors/${id}`, {
       method: "DELETE",
-    });
+    }).then(() =>
+      setListOfSavedTutors(listOfSavedTutors.filter((tutor) => tutor.id !== id))
+    );
   }
 
   return (
@@ -22,7 +29,7 @@ function SavedTutorCard({ tutor, user }) {
           <Card.Title>${tutor.hourly_rate}/hour</Card.Title>
           <Card.Subtitle></Card.Subtitle>
           <Card.Text>Description: {tutor.description}</Card.Text>
-          <Button variant="danger" onClick={(e) => handleEliminate(tutor.id)}>
+          <Button variant="danger" onClick={() => handleEliminate(tutor.id)}>
             Eliminate
           </Button>
           <Button variant="primary" onClick={handleShow}>
@@ -40,7 +47,7 @@ function SavedTutorCard({ tutor, user }) {
           <ul>
             Reviews:
             {tutor.reviews?.map((review) => (
-              <li key={review.id}>"{review.review_body}"</li>
+              <li key={review.id}>{review.review_body}</li>
             ))}
           </ul>
         </Modal.Body>

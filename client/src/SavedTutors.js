@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 // import TutorCard from "./TutorCard";
 import SavedTutorCard from "./SavedTutorCard";
 
-function SavedTutors({ user, setUser }) {
+function SavedTutors({
+  user,
+  setUser,
+  listOfSavedTutors,
+  setListOfSavedTutors,
+}) {
+  // const [listOfSavedTutors, setListOfSavedTutors] = useState(user.tutors);
+
   return (
     <>
       <h2>My Tutors</h2>
       <Slider>
-        {user.tutors?.map((tutor) => (
+        {listOfSavedTutors?.map((tutor) => (
           <div>
-            <SavedTutorCard key={tutor.id} tutor={tutor} user={user} />
+            <SavedTutorCard
+              key={tutor.id}
+              tutor={tutor}
+              user={user}
+              listOfSavedTutors={listOfSavedTutors}
+              setListOfSavedTutors={setListOfSavedTutors}
+            />
           </div>
         ))}
       </Slider>
