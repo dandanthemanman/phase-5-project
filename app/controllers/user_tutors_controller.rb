@@ -6,8 +6,9 @@ class UserTutorsController < ApplicationController
     end
 
     def destroy 
-        user_tutor= UserTutor.find_by(tutor_id: params[:tutor_id], user_id: params[:user_id])
+        user_tutor= UserTutor.find_by(tutor_id: params[:id], user_id: session[:user_id])
         user_tutor.destroy
+        
     end
 
     private

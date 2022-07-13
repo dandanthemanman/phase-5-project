@@ -54,7 +54,6 @@ function LoginForm({ setUser, user }) {
           setUser(userData);
           history.push("/home");
         });
-        // TODO: VV not routing to "/home"
       } else {
         // if userdata is bad, set error state
         r.json().then((err) => setErrors(err.errors));

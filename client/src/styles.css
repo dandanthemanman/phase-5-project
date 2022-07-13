@@ -1,0 +1,11 @@
+.review_revealed {
+    transition: 1s;
+    height: 200px;
+    opacity: 1;
+}
+
+.review_hidden {
+    transition: 1s;
+    height: 0px;
+    opacity: 0;
+}
