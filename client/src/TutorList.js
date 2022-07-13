@@ -16,21 +16,25 @@ function TutorList({ user, setUser, listOfSavedTutors, setListOfSavedTutors }) {
   useEffect(fetchTutors, []);
 
   return (
-    <div>
+    <>
       <h2>Explore Tutors</h2>
-      {tutorData?.map((tutor) => (
-        <>
-          <TutorCard
-            key={tutor.id}
-            tutor={tutor}
-            user={user}
-            setUser={setUser}
-            listOfSavedTutors={listOfSavedTutors}
-            setListOfSavedTutors={setListOfSavedTutors}
-          />
-        </>
-      ))}
-    </div>
+      <div className="tutor_list_container">
+        <div className="row">
+          {tutorData?.map((tutor) => (
+            <div className="col">
+              <TutorCard
+                key={tutor.id}
+                tutor={tutor}
+                user={user}
+                setUser={setUser}
+                listOfSavedTutors={listOfSavedTutors}
+                setListOfSavedTutors={setListOfSavedTutors}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
 

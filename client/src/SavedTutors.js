@@ -11,12 +11,18 @@ function SavedTutors({
   listOfSavedTutors,
   setListOfSavedTutors,
 }) {
-  // const [listOfSavedTutors, setListOfSavedTutors] = useState(user.tutors);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+  };
 
   return (
     <>
       <h2>My Tutors</h2>
-      <Slider>
+      <Slider {...settings}>
         {listOfSavedTutors?.map((tutor) => (
           <div>
             <SavedTutorCard

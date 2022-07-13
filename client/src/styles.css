@@ -1,11 +1,17 @@
 .review_revealed {
-    transition: 1s;
+    transition: 0.5s;
     height: 200px;
     opacity: 1;
 }
 
 .review_hidden {
-    transition: 1s;
+    transition: 0.5s;
     height: 0px;
     opacity: 0;
+}
+
+.tutor_list_container {
+    width: 100%; 
+    height: 600px;
+    overflow: scroll;
 }

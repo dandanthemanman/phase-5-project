@@ -83,8 +83,8 @@ function TutorCard({
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Enroll
+          <Button variant="primary" onClick={handleSave}>
+            Save
           </Button>
           <Button variant="success" onClick={() => setRevealCreateReview(true)}>
             Leave a Review

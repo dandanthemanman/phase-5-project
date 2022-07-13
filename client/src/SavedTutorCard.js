@@ -47,7 +47,7 @@ function SavedTutorCard({
           <ul>
             Reviews:
             {tutor.reviews?.map((review) => (
-              <li key={review.id}>{review.review_body}</li>
+              <li key={review.id}>"{review.review_body}"</li>
             ))}
           </ul>
         </Modal.Body>
@@ -55,8 +55,8 @@ function SavedTutorCard({
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Enroll
+          <Button variant="danger" onClick={() => handleEliminate(tutor.id)}>
+            Eliminate
           </Button>
         </Modal.Footer>
       </Modal>
