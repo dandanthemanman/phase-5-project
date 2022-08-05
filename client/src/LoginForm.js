@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import "./styles.css";
 
 function LoginForm({ setUser, user }) {
   const [username, setUsername] = useState("");
@@ -91,18 +92,18 @@ function LoginForm({ setUser, user }) {
           />
         </Form.Group>
         <Button onClick={handleLogin} variant="primary" type="submit">
-          Submit
+          Sign in
         </Button>
         <Button
-          variant="primary"
+          variant="dark"
           onClick={() => {
             setRevealSignup(!revealSignup);
           }}
         >
-          Signup
+          No Account?
         </Button>
         <Form.Group>
-          <h2>login errors: {errors}</h2>
+          <h3>{errors}</h3>
         </Form.Group>
       </Form>
     );
@@ -147,15 +148,15 @@ function LoginForm({ setUser, user }) {
         />
       </Form.Group>
       <Button
-        variant="primary"
+        variant="dark"
         onClick={() => {
           setRevealSignup(!revealSignup);
         }}
       >
-        Sign In
+        Go Back
       </Button>
-      <Button onClick={handleSignup} variant="primary" type="submit">
-        Done
+      <Button onClick={handleSignup} variant="success" type="submit">
+        Signup
       </Button>
       <Form.Group>
         <h2>login errors: {errors}</h2>

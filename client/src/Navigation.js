@@ -13,7 +13,7 @@ import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-function Navigation({ user, setUser }) {
+function Navigation({ user, setUser, setSearch, search }) {
   let history = useHistory();
 
   // logout fn
@@ -64,6 +64,9 @@ function Navigation({ user, setUser }) {
                 placeholder="Search"
                 className="me-2"
                 aria-label="Search"
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                }}
               />
               <Button onClick={handleLogout}>Logout</Button>
             </Form>

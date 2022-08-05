@@ -5,11 +5,17 @@ import SavedTutors from "./SavedTutors";
 
 function Home({ user, setUser }) {
   const [listOfSavedTutors, setListOfSavedTutors] = useState(user.tutors);
+  const [search, setSearch] = useState("");
 
   return (
     <>
       <h1>Home</h1>
-      <Navigation user={user} setUser={setUser} />
+      <Navigation
+        user={user}
+        setUser={setUser}
+        setSearch={setSearch}
+        search={search}
+      />
       <SavedTutors
         user={user}
         setUser={setUser}
@@ -21,6 +27,7 @@ function Home({ user, setUser }) {
         setUser={setUser}
         listOfSavedTutors={listOfSavedTutors}
         setListOfSavedTutors={setListOfSavedTutors}
+        search={search}
       />
     </>
   );
