@@ -11,22 +11,19 @@ function TutorCard({
   listOfSavedTutors,
   setListOfSavedTutors,
 }) {
-  // TODO: code from handleCumulativeRating fn; so that cumulativeRating state can access it
-  let ratingArr = tutor.reviews.map((review) => review.rating);
-  let nom = ratingArr.reduce(
-    (prevValue, currValue) => prevValue + currValue,
-    0
-  );
-  let dom = ratingArr.length;
-
   // states
   const [show, setShow] = useState(false);
   const [revealCreateReview, setRevealCreateReview] = useState(false);
   const [reviewContent, setReviewContent] = useState("");
   const [ratingState, setRatingState] = useState(1);
   const [tutorReviews, setTutorReviews] = useState(tutor.reviews);
-  // TODO: set cumulativeRating default state to a malleable value (array/length of array); this will allow it to be updated in real time w/o fetch
-  const [cumulativeRating, setCumulativeRating] = useState(nom / dom);
+  const [ratingArray, setRatingArray] = useState(
+    tutor.reviews.map((review) => review.rating)
+  );
+  const [cumulativeRating, setCumulativeRating] = useState(
+    ratingArray.reduce((prevValue, currValue) => prevValue + currValue, 0) /
+      ratingArray.length
+  );
 
   // fn's
   const handleClose = () => setShow(false);
@@ -70,17 +67,6 @@ function TutorCard({
       });
   }
 
-  // TODO: took this code out of the function so that it could be the cumulativeRating default state value
-  function handleCumulativeRating() {
-    // let ratingArr = tutor.reviews.map((review) => review.rating);
-    // let nom = ratingArr.reduce(
-    //   (prevValue, currValue) => prevValue + currValue,
-    //   0
-    // );
-    // let dom = ratingArr.length;
-    // setCumulativeRating(nom/dom)
-  }
-
   return (
     <>
       <Card style={{ width: "18rem" }}>
@@ -106,7 +92,10 @@ function TutorCard({
             More Info
           </Button>
           {/*  tester btn  */}
-          <Button variant="primary" onClick={handleCumulativeRating}>
+          <Button
+            variant="primary"
+            onClick={() => console.log(cumulativeRating)}
+          >
             Tester
           </Button>
         </Card.Body>
