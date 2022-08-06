@@ -11,15 +11,22 @@ function TutorCard({
   listOfSavedTutors,
   setListOfSavedTutors,
 }) {
+  // TODO: code from handleCumulativeRating fn; so that cumulativeRating state can access it
+  let ratingArr = tutor.reviews.map((review) => review.rating);
+  let nom = ratingArr.reduce(
+    (prevValue, currValue) => prevValue + currValue,
+    0
+  );
+  let dom = ratingArr.length;
+
   // states
   const [show, setShow] = useState(false);
   const [revealCreateReview, setRevealCreateReview] = useState(false);
   const [reviewContent, setReviewContent] = useState("");
   const [ratingState, setRatingState] = useState(1);
   const [tutorReviews, setTutorReviews] = useState(tutor.reviews);
-  const [cumulativeRating, setCumulativeRating] = useState(
-    tutor.cumulativeRating
-  );
+  // TODO: set cumulativeRating default state to a malleable value (array/length of array); this will allow it to be updated in real time w/o fetch
+  const [cumulativeRating, setCumulativeRating] = useState(nom / dom);
 
   // fn's
   const handleClose = () => setShow(false);
@@ -39,7 +46,6 @@ function TutorCard({
 
   function addNewReview(newReview) {
     setTutorReviews([...tutorReviews, newReview]);
-    // let sum = tutor.reviews.reduce((partialSum, a) => partialSum + a, 0);
   }
   function handleReview() {
     fetch("/reviews", {
@@ -53,20 +59,41 @@ function TutorCard({
       }),
     })
       .then((r) => r.json())
-      .then((r) => console.log(r));
-    addNewReview({
-      user_id: user.id,
-      tutor_id: tutor.id,
-      review_body: reviewContent,
-      rating: ratingState,
-    });
+      .then((r) => console.log(r))
+      .then(() => {
+        addNewReview({
+          user_id: user.id,
+          tutor_id: tutor.id,
+          review_body: reviewContent,
+          rating: ratingState,
+        });
+      });
+  }
+
+  // TODO: took this code out of the function so that it could be the cumulativeRating default state value
+  function handleCumulativeRating() {
+    // let ratingArr = tutor.reviews.map((review) => review.rating);
+    // let nom = ratingArr.reduce(
+    //   (prevValue, currValue) => prevValue + currValue,
+    //   0
+    // );
+    // let dom = ratingArr.length;
+    // setCumulativeRating(nom/dom)
   }
 
   return (
     <>
       <Card style={{ width: "18rem" }}>
         <Card.Header as="h5">
-          {tutor.name} {cumulativeRating}
+          {tutor.name} (
+          {cumulativeRating ? cumulativeRating.toFixed(1) : "No ratings yet"})
+          <ReactStars
+            value={Math.round(cumulativeRating)}
+            count={5}
+            isHalf={true}
+            size={24}
+            activeColor="#ffd700"
+          />
         </Card.Header>
         <Card.Body>
           <Card.Title>${tutor.hourly_rate}/hour</Card.Title>
@@ -78,19 +105,8 @@ function TutorCard({
           <Button variant="primary" onClick={handleShow}>
             More Info
           </Button>
-          <Button
-            variant="primary"
-            onClick={() => {
-              let ratingArr = tutor.reviews.map((review) => review.rating);
-              let nom = ratingArr.reduce(
-                (prevValue, currValue) => prevValue + currValue,
-                0
-              );
-              let dom = tutor.reviews.length;
-              setCumulativeRating(nom / dom);
-              console.log(cumulativeRating);
-            }}
-          >
+          {/*  tester btn  */}
+          <Button variant="primary" onClick={handleCumulativeRating}>
             Tester
           </Button>
         </Card.Body>
