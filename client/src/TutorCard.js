@@ -21,8 +21,6 @@ function TutorCard({ tutor, user, listOfSavedTutors, setListOfSavedTutors }) {
       ratingArray.length
   );
 
-  console.log(`TutorCard's show state is: ${show}`);
-
   // fn's
   // const handleClose = () => setShow(false);
   const handleShow = () => {
@@ -106,26 +104,19 @@ function TutorCard({ tutor, user, listOfSavedTutors, setListOfSavedTutors }) {
           </Button>
         </Card.Body>
       </Card>
-      {show ? (
-        <>
-          <h3>on</h3>
-          <TutorCardModal
-            tutor={tutor}
-            user={user}
-            handleSave={handleSave}
-            listOfSavedTutors={listOfSavedTutors}
-            setListOfSavedTutors={setListOfSavedTutors}
-            ratingArray={ratingArray}
-            setRatingArray={setRatingArray}
-            cumulativeRating={cumulativeRating}
-            setCumulativeRating={setCumulativeRating}
-            show={show}
-            setShow={setShow}
-          />
-        </>
-      ) : (
-        <h3>off</h3>
-      )}
+      <TutorCardModal
+        tutor={tutor}
+        user={user}
+        handleSave={handleSave}
+        listOfSavedTutors={listOfSavedTutors}
+        setListOfSavedTutors={setListOfSavedTutors}
+        ratingArray={ratingArray}
+        setRatingArray={setRatingArray}
+        cumulativeRating={cumulativeRating}
+        setCumulativeRating={setCumulativeRating}
+        show={show}
+        setShow={setShow}
+      />
     </>
   );
 }

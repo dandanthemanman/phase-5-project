@@ -63,10 +63,6 @@ function TutorCardModal({
     );
   }
 
-  console.log(
-    `TutorCardModal is active. TutorCardModal's show state is: ${show}`
-  );
-
   return (
     <Modal centered show={show} onHide={handleClose} animation={false}>
       <Modal.Header closeButton>
