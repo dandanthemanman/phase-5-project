@@ -11,6 +11,20 @@ function TutorList({
 }) {
   const [tutorData, setTutorData] = useState([]);
 
+  // sortByRating state
+  // const [sortByRating, setSortByRating] = useState(null);
+  // const sortedTutors = tutorData.sort((a, b) => {
+  //   if (sortByRating === null) {
+  //     a.cumulativeRating > b.cumulativeRating ? 1 : 1;
+  //   }
+  //   if (sortByRating === "highToLow") {
+  //     a.cumulativeRating > b.cumulativeRating ? -1 : 1;
+  //   }
+  //   if (sortByRating === "LowToHigh") {
+  //     a.cumulativeRating > b.cumulativeRating ? 1 : -1;
+  //   }
+  // });
+
   // fetch tutors fn
   function fetchTutors() {
     fetch("/tutors")
