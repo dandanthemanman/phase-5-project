@@ -8,22 +8,28 @@ function TutorList({
   listOfSavedTutors,
   setListOfSavedTutors,
   search,
+  filterParameter,
 }) {
   const [tutorData, setTutorData] = useState([]);
 
-  // sortByRating state
-  // const [sortByRating, setSortByRating] = useState(null);
-  // const sortedTutors = tutorData.sort((a, b) => {
-  //   if (sortByRating === null) {
-  //     a.cumulativeRating > b.cumulativeRating ? 1 : 1;
-  //   }
-  //   if (sortByRating === "highToLow") {
-  //     a.cumulativeRating > b.cumulativeRating ? -1 : 1;
-  //   }
-  //   if (sortByRating === "LowToHigh") {
-  //     a.cumulativeRating > b.cumulativeRating ? 1 : -1;
-  //   }
-  // });
+  // dont' understand why sort methods effect tutorData; sortedTutors is declared here but never called in JSX
+
+  let sortedTutors;
+  if (filterParameter === "rating") {
+    sortedTutors = tutorData.sort((a, b) =>
+      a.cumulativeRating > b.cumulativeRating ? -1 : 1
+    );
+  }
+  if (filterParameter === "hourly_rate") {
+    sortedTutors = tutorData.sort((a, b) =>
+      a.hourly_rate > b.hourly_rate ? 1 : -1
+    );
+  }
+  if (filterParameter === "number_of_reviews") {
+    sortedTutors = tutorData.sort((a, b) =>
+      a.reviews.length < b.reviews.length ? 1 : -1
+    );
+  }
 
   // fetch tutors fn
   function fetchTutors() {

@@ -6,6 +6,7 @@ import SavedTutors from "./SavedTutors";
 function Home({ user, setUser }) {
   const [listOfSavedTutors, setListOfSavedTutors] = useState(user.tutors);
   const [search, setSearch] = useState("");
+  const [filterParameter, setFilterParameter] = useState("rating");
 
   return (
     <>
@@ -14,7 +15,7 @@ function Home({ user, setUser }) {
         user={user}
         setUser={setUser}
         setSearch={setSearch}
-        search={search}
+        setFilterParameter={setFilterParameter}
       />
       <SavedTutors
         user={user}
@@ -28,6 +29,7 @@ function Home({ user, setUser }) {
         listOfSavedTutors={listOfSavedTutors}
         setListOfSavedTutors={setListOfSavedTutors}
         search={search}
+        filterParameter={filterParameter}
       />
     </>
   );
